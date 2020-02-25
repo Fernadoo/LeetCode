@@ -30,37 +30,37 @@ It doesn't matter what values are set beyond the returned length.
 '''
 
 class Solution:
-	def removeElement(self, nums, val) -> int:
-		"""
-		:type nums: List[int]
-		:type val: int
-		:rtype: int
-		"""
-		i = 0
-		while i < len(nums) -1 :
-			all_is_val = 1
-			for k in range(i, len(nums)):
-				if nums[k] != val:
-					all_is_val = 0
-			repeat = 0
-			if nums[i] == val:
-				if nums[i] == nums[i+1]:
-					repeat = 1
-				for j in range(i, len(nums)-1):
-					tmp = nums[j]
-					nums[j] = nums[j+1]
-					nums[j+1] = tmp
-				print(nums)
-			if repeat == 1:
-				if all_is_val == 1:
-					i += 1
-			else:
-				i += 1 
-		count = 0
-		for i in range(len(nums)):
-			if nums[i] == val:
-				count += 1
-		return len(nums) - count
+    def removeElement(self, nums, val) -> int:
+        """
+        :type nums: List[int]
+        :type val: int
+        :rtype: int
+        """
+        i = 0
+        while i < len(nums) -1 :
+            all_is_val = 1
+            for k in range(i, len(nums)):
+                if nums[k] != val:
+                    all_is_val = 0
+            repeat = 0
+            if nums[i] == val:
+                if nums[i] == nums[i+1]:
+                    repeat = 1
+                for j in range(i, len(nums)-1):
+                    tmp = nums[j]
+                    nums[j] = nums[j+1]
+                    nums[j+1] = tmp
+                print(nums)
+            if repeat == 1:
+                if all_is_val == 1:
+                    i += 1
+            else:
+                i += 1 
+        count = 0
+        for i in range(len(nums)):
+            if nums[i] == val:
+                count += 1
+        return len(nums) - count
 
 
 sol = Solution()
