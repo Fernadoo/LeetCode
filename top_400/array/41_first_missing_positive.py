@@ -30,11 +30,20 @@ class Solution(object):
         for i in range(len(nums)):
             if nums[i] > len(nums) or nums[i] <= 0:
                 nums[i] = -1
-        for i in range(len(nums)):
-            if nums[i] > i + 1:
+        i = 0
+        while i < len(nums):
+            if (nums[i] != i + 1) and (nums[i] != -1):
                 tmp = nums[nums[i] - 1]
                 nums[nums[i] - 1] = nums[i]
-                if nums[i] == 
+                nums[i] = (-1 if tmp == nums[i] else tmp)
+                i -= 1
+            elif nums[i] == i + 1:
+                pass
+            i += 1
+        for i in range(len(nums)):
+            if i + 1 != nums[i]:
+                return  i + 1
+        return len(nums) + 1
 
 
 # # Recommended solution
@@ -64,6 +73,7 @@ class Solution(object):
 #             if i + 1 != nums[i]:
 #                 return i + 1
 #         return nums[-1] + 1
+
 
 sol = Solution()
 nums = [7,8,9,11,12]
