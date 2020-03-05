@@ -18,13 +18,13 @@ class ListNode(object):
         self.next = None
     
     def __str__(self):
-    	output = ""
-    	curr = self
-    	while curr.next != None:
-    		output = output + str(curr.val) + "-> "
-    		curr = curr.next
-    	output += "NULL"
-    	return output
+        output = ""
+        curr = self
+        while curr != None:
+            output = output + str(curr.val) + "-> "
+            curr = curr.next
+        output += "NULL"
+        return output
 
 # Iterative
 class Solution(object):
@@ -33,6 +33,16 @@ class Solution(object):
         :type head: ListNode
         :rtype: ListNode
         """
+        slow = None
+        mid, fast = head, head
+        # print(mid)
+        while fast != None:
+            fast = mid.next
+            mid.next = slow
+            slow = mid 
+            mid = fast
+            # print(slow)
+        return slow
 
 # # Recursive
 # class Solution(object):
@@ -47,5 +57,5 @@ x_1, x_2, x_3, x_4 = ListNode(1), ListNode(2), ListNode(3), ListNode(4)
 x_1.next = x_2
 x_2.next = x_3
 x_3.next = x_4
-print(x_1)
+# print(x_1)
 print(sol.reverseList(x_1))
