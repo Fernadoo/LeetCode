@@ -26,31 +26,38 @@ class ListNode(object):
         output += "NULL"
         return output
 
-# Iterative
-class Solution(object):
-    def reverseList(self, head):
-        """
-        :type head: ListNode
-        :rtype: ListNode
-        """
-        slow = None
-        mid, fast = head, head
-        # print(mid)
-        while fast != None:
-            fast = mid.next
-            mid.next = slow
-            slow = mid 
-            mid = fast
-            # print(slow)
-        return slow
-
-# # Recursive
+# # Iterative
 # class Solution(object):
 #     def reverseList(self, head):
 #         """
 #         :type head: ListNode
 #         :rtype: ListNode
 #         """
+#         slow = None
+#         mid, fast = head, head
+#         # print(mid)
+#         while fast != None:
+#             fast = mid.next
+#             mid.next = slow
+#             slow = mid 
+#             mid = fast
+#             # print(slow)
+#         return slow
+
+# Recursive
+class Solution(object):
+    def reverseList(self, head):
+        """
+        :type head: ListNode
+        :rtype: ListNode
+        """
+        if (head == None) or (head.next == None):
+            return head
+        without_head = head.next
+        reverse_without_head = self.reverseList(without_head)
+        head.next.next = head
+        head.next = None
+        return reverse_without_head
 
 sol = Solution()
 x_1, x_2, x_3, x_4 = ListNode(1), ListNode(2), ListNode(3), ListNode(4)
