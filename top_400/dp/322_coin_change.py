@@ -21,6 +21,7 @@ You may assume that you have an infinite number of each kind of coin.
 '''
 import copy
 
+# Bottom up
 class Solution(object):
     def coinChange(self, coins, amount):
         """
